@@ -1,3 +1,19 @@
-Previous and next links (in same category)
+***************************************************************
+!!! Previous and next links (in same category) !!!
 <?php previous_post_link('%link', '< Last Dress', TRUE); ?>
 <?php next_post_link('%link', 'Next Dress > ', TRUE); ?>
+***************************************************************
+
+***************************************************************
+!!! Stop WP login redirect !!!
+add_action('authenticate','blank_login');
+function blank_login(){
+if (!strstr($referrer,'wp-login') && $username==null ){
+wp_redirect( get_site_url());//$referrer . '?login=failed' ); // let's append some information (login=failed) to the URL for the theme to use
+exit;
+}
+}
+***************************************************************
+
+***************************************************************
+!!! 
